@@ -1,0 +1,12 @@
+public static void main(String[] args) {
+		int n = 9;
+		int t = n;
+		String ans = "";
+		while(t > 0){
+		    int r = t%2;
+		    ans = r + ans;
+		    t = t/2;
+		    
+		}
+		System.out.print(ans);
+    }
