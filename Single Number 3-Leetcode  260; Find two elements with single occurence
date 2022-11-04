@@ -1,0 +1,25 @@
+public int[] singleNumber(int[] nums) {
+    int[]arr = new int[2]; //used new array because of return type, else print x,y to solve this in constant space.
+    int n = nums.length;
+    int ans = nums[0];
+    for(int i=1; i<n; i++){
+        ans^=nums[i];
+    }
+    
+    int x = 0, y = 0;
+    // find position of rightmost set bit in ans
+    int k = log(ans & -ans, 2);
+    
+    for(int i : nums){
+        if((i & (1<<k)) != 0) // elements having kth set bit
+            x^=i;
+        else // elements dont have kth set bit
+            y^=i;    
+    }
+    
+    arr[0] = x; arr[1] = y;
+    return arr;
+}
+public static int log(int x, int base){
+    return (int)(Math.log(x) / Math.log(base));
+}
